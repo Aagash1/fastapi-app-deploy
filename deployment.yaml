@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fastapi-app
-          image: aagash11/fastapi-app:latest
+          image: aagash11/fastapi-app:b193e764
           ports:
             - containerPort: 8000
           resources:
