@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-orders
+  labels:
+    app: fastapi-orders
+spec:
+  type: LoadBalancer
+  selector:
+    app: fastapi-orders
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
