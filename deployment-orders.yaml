@@ -27,7 +27,7 @@ spec:
             - name: ENABLE_LOKI
               value: "true"
             - name: LOKI_URL
-              value: "http://loki:3100/loki/api/v1/push"
+              value: "http://loki.fastapi-kube-app.svc.cluster.local:3100/loki/api/v1/push"
           resources:
             requests:
               cpu: "100m"
