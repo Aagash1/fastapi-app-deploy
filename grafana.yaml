@@ -16,7 +16,7 @@ data:
       - name: Loki
         type: loki
         access: proxy
-        url: http://loki.fastapi-kube-app.svc.cluster.local:3100
+        url: http://loki:3100
         uid: loki
         isDefault: false
         editable: true
