@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: fastapi-orders
-          image: aagash11/fastapi-orders:5a3117c1
+          image: aagash11/fastapi-orders:fc39e6bb
           ports:
             - containerPort: 8000
           env:
