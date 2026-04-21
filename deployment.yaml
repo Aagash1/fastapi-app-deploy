@@ -13,6 +13,10 @@ spec:
     metadata:
       labels:
         app: fastapi-app
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
     spec:
       containers:
         - name: fastapi-app
@@ -22,6 +26,8 @@ spec:
           env:
             - name: ENABLE_LOKI
               value: "true"
+            - name: LOKI_URL
+              value: "http://loki:3100/loki/api/v1/push"
           resources:
             requests:
               cpu: "100m"
