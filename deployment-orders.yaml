@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fastapi-orders
-          image: aagash11/fastapi-orders:latest
+          image: aagash11/fastapi-orders:6cc0f373
           ports:
             - containerPort: 8000
           resources:
