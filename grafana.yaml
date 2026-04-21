@@ -41,11 +41,11 @@ data:
       "panels": [
         {
           "id": 1,
-          "title": "Pods Running (default namespace)",
+          "title": "Pods Running (fastapi-kube-app namespace)",
           "type": "stat",
           "gridPos": { "h": 4, "w": 8, "x": 0, "y": 0 },
           "datasource": { "type": "loki", "uid": "loki" },
-          "targets": [{ "expr": "count(count by (pod) ({namespace=\"default\"}))", "legendFormat": "Pods" }],
+          "targets": [{ "expr": "count(count by (pod) ({namespace=\"fastapi-kube-app\"}))", "legendFormat": "Pods" }],
           "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "background", "graphMode": "none" }
         },
         {
@@ -68,11 +68,11 @@ data:
         },
         {
           "id": 4,
-          "title": "All Logs — default namespace",
+          "title": "All Logs — fastapi-kube-app namespace",
           "type": "logs",
           "gridPos": { "h": 10, "w": 24, "x": 0, "y": 16 },
           "datasource": { "type": "loki", "uid": "loki" },
-          "targets": [{ "expr": "{namespace=\"default\"}" }],
+          "targets": [{ "expr": "{namespace=\"fastapi-kube-app\"}" }],
           "options": { "showTime": true, "showLabels": true, "wrapLogMessage": true, "sortOrder": "Descending", "enableLogDetails": true }
         }
       ]
@@ -111,8 +111,6 @@ spec:
               mountPath: /etc/grafana/provisioning/dashboards
             - name: grafana-dashboard
               mountPath: /etc/grafana/dashboards
-            - name: grafana-storage
-              mountPath: /var/lib/grafana
       volumes:
         - name: grafana-datasources
           configMap:
@@ -123,23 +121,6 @@ spec:
         - name: grafana-dashboard
           configMap:
             name: grafana-dashboard
-        - name: grafana-storage
-          persistentVolumeClaim:
-            claimName: grafana-pvc
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: grafana
-  labels:
-    app: grafana
-spec:
-  type: LoadBalancer
-  selector:
-    app: grafana
-  ports:
-    - port: 80
-      targetPort: 3000
 ---
 apiVersion: v1
 kind: Service
