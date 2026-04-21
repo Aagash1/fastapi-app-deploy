@@ -30,7 +30,11 @@ data:
     apiVersion: 1
     providers:
       - name: fastapi
+        orgId: 1
         type: file
+        disableDeletion: false
+        updateIntervalSeconds: 10
+        allowUiUpdates: true
         options:
           path: /etc/grafana/dashboards
 ---
@@ -47,6 +51,8 @@ data:
       "uid": "fastapi-obs",
       "schemaVersion": 38,
       "refresh": "30s",
+      "tags": ["fastapi", "loki", "prometheus"],
+      "folderId": 0,
       "time": { "from": "now-1h", "to": "now" },
       "panels": [
         {
