@@ -19,6 +19,9 @@ spec:
           image: aagash11/fastapi-app:6cc0f373
           ports:
             - containerPort: 8000
+          env:
+            - name: ENABLE_LOKI
+              value: "true"
           resources:
             requests:
               cpu: "100m"
